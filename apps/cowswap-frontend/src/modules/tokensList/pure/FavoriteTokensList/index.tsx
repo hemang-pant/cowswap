@@ -24,7 +24,6 @@ export function FavoriteTokensList(props: FavoriteTokensListProps) {
       <styledEl.List>
         {tokens.map((token) => {
           const isTokenSelected = token.address.toLowerCase() === selectedToken?.toLowerCase()
-
           return (
             <styledEl.TokensItem
               key={token.address}

@@ -50,7 +50,7 @@ const swapButtonStateMap: { [key in SwapButtonState]: (props: SwapButtonsContext
   ),
   [SwapButtonState.WalletIsUnsupported]: () => (
     <ButtonError buttonSize={ButtonSize.BIG} disabled={true}>
-      <Text fontSize={20} fontWeight={500}>
+      <Text fontSize={20} fontWeight={500}>ƒ
         <Trans>Wallet Unsupported</Trans>
       </Text>
     </ButtonError>

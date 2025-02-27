@@ -3,7 +3,7 @@ import { lazy, PropsWithChildren, Suspense, useMemo } from 'react'
 import { ACTIVE_CUSTOM_THEME, CustomTheme } from '@cowprotocol/common-const'
 import { useFeatureFlags, useMediaQuery } from '@cowprotocol/common-hooks'
 import { isInjectedWidget } from '@cowprotocol/common-utils'
-import { Color, Footer, GlobalCoWDAOStyles, Media, MenuBar } from '@cowprotocol/ui'
+import { ButtonPrimary, ButtonSecondary, Color, Footer, GlobalCoWDAOStyles, Media, MenuBar } from '@cowprotocol/ui'
 
 import SVG from 'react-inlinesvg'
 import { NavLink } from 'react-router-dom'
@@ -35,6 +35,8 @@ import RedirectAnySwapAffectedUsers from 'pages/error/AnySwapAffectedUsers/Redir
 
 import { ADDITIONAL_FOOTER_CONTENT, NAV_ITEMS, PRODUCT_VARIANT } from './menuConsts'
 import * as styledEl from './styled'
+import { useBalance } from "@arcana/ca-wagmi"
+
 
 const RoutesApp = lazy(() => import('./RoutesApp').then((module) => ({ default: module.RoutesApp })))
 
@@ -61,6 +63,9 @@ export function App() {
 
   const isInjectedWidgetMode = isInjectedWidget()
   const menuItems = useMenuItems()
+
+  const { showBalance } = useBalance();
+
 
   const [darkMode, toggleDarkMode] = useDarkModeManager()
 
@@ -111,6 +116,11 @@ export function App() {
 
   const persistentAdditionalContent = (
     <HeaderControls>
+      <ButtonSecondary onClick={
+        () => showBalance()
+      }>
+        Show Unified Balance
+      </ButtonSecondary>
       {!hideNetworkSelector && <NetworkSelector />}
       <HeaderElement>
         <AccountElement pendingActivities={pendingActivity} />

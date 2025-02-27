@@ -231,7 +231,9 @@ export function useDerivedSwapInfo(): DerivedSwapInfo {
       inputError = t`Couldn't load balances`
     }
 
-    if (balanceIn && amountIn && balanceIn.lessThan(amountIn)) {
+    if (balanceIn && amountIn 
+      && balanceIn.lessThan(amountIn)
+    ) {
       inputError = t`Insufficient ${formatSymbol(amountIn.currency.symbol)} balance`
     }
 

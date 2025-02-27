@@ -54,6 +54,7 @@ export async function safeBundleEthFlow(
 
   tradeConfirmActions.onSign(tradeAmounts)
   try {
+    console.log("reached safeBundleEthFlow")
     const txs: MetaTransactionData[] = []
 
     logTradeFlow(LOG_PREFIX, 'STEP 2: wrap native token')

@@ -11,6 +11,8 @@ import { VirtualList } from 'common/pure/VirtualList'
 import { SelectTokenContext } from '../../types'
 import { tokensListSorter } from '../../utils/tokensListSorter'
 import { TokenListItem } from '../TokenListItem'
+import { useUnifiedBalance } from '@arcana/ca-wagmi'
+import { BigNumber } from 'ethers'
 
 export interface TokensVirtualListProps extends SelectTokenContext {
   allTokens: TokenWithLogo[]

@@ -25,7 +25,7 @@ export function TradeWidget(props: TradeWidgetProps) {
           tradeQuoteStateOverride={tradeQuoteStateOverride}
           enableSmartSlippage={enableSmartSlippage}
           onChangeRecipient={props.actions.onChangeRecipient}
-        >
+        > 
           {slots.updaters}
         </TradeWidgetUpdaters>
 

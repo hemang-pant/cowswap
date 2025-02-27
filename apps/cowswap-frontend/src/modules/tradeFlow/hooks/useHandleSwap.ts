@@ -23,8 +23,6 @@ export function useHandleSwap(params: TradeFlowParams, actions: TradeWidgetActio
   const priceImpactParams = useTradePriceImpact()
   const { onUserInput, onChangeRecipient } = actions
 
-  console.log("button pressed")
-  console.log("floow type", tradeFlowType)
 
   const contextIsReady =
     Boolean(

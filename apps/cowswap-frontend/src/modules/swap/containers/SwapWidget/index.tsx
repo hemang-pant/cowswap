@@ -59,6 +59,7 @@ import { SwapButtonState } from '../../helpers/getSwapButtonState'
 import { useDerivedSwapInfo, useSwapActionHandlers, useSwapState } from '../../hooks/useSwapState'
 import { useTradeQuoteStateFromLegacy } from '../../hooks/useTradeQuoteStateFromLegacy'
 import { ConfirmSwapModalSetup } from '../ConfirmSwapModalSetup'
+import { useBalance } from '@arcana/ca-wagmi'
 
 export interface SwapWidgetProps {
   topContent?: ReactNode
@@ -132,6 +133,8 @@ export function SwapWidget({ topContent, bottomContent }: SwapWidgetProps) {
     fiatAmount: inputUsdValue,
     receiveAmountInfo: !isSellTrade ? receiveAmountInfo : null,
   }
+  const { showBalance } = useBalance();
+
 
   const outputCurrencyInfo: CurrencyInfo = {
     field: Field.OUTPUT,
@@ -254,7 +257,6 @@ export function SwapWidget({ topContent, bottomContent }: SwapWidgetProps) {
             />
             <SwapWarningsTop {...swapWarningsTopProps} />
             {warnings}
-            {/* how how how */}
             <SwapButtons {...swapButtonContext} />
             <SwapWarningsBottom {...swapWarningsBottomProps} />
           </>
@@ -329,7 +331,6 @@ export function SwapWidget({ topContent, bottomContent }: SwapWidgetProps) {
           }
           genericModal={showNativeWrapModal && <EthFlowModal {...ethFlowProps} />}
         />
-
         {!isHookTradeType && <NetworkAlert />}
         {isHookTradeType && !!account && (
           <InlineBanner

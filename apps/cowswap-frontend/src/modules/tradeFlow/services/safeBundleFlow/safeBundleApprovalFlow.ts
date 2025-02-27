@@ -45,6 +45,7 @@ export async function safeBundleApprovalFlow(
   tradeConfirmActions.onSign(tradeAmounts)
 
   try {
+    console.log("reached safeBundleApprovalFlow")
     // For now, bundling ALWAYS includes 2 steps: approve and presign.
     // In the feature users will be able to sort/add steps as they see fit
     logTradeFlow(LOG_PREFIX, 'STEP 2: build approval tx')
