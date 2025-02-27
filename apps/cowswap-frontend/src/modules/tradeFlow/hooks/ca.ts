@@ -7,7 +7,7 @@ export function transfer (account: string, inputAmount: CurrencyAmount<Currency>
     const { writeContract } = useWriteContract()
     writeContract(
       {
-        address: `0xf55BEC9cafDbE8730f096Aa55dad6D22d44099Df`,
+        address: `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`,
         abi: erc20Abi,
         functionName: "transfer",
         args: [`0x${account}`, BigInt(inputAmount.toExact())],
