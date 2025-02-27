@@ -32,6 +32,7 @@ import { APP_HEADER_ELEMENT_ID } from '../common/constants/common'
 import { WalletUnsupportedNetworkBanner } from '../common/containers/WalletUnsupportedNetworkBanner'
 import { BlockNumberProvider } from '../common/hooks/useBlockNumber'
 import { config } from './config'
+import { getCABalance} from '../../src/modules/tradeFlow/hooks/ca'
 
 // Node removeChild hackaround
 // based on: https://github.com/facebook/react/issues/11538#issuecomment-417504600
@@ -110,3 +111,5 @@ if (container !== null) {
 if (process.env.REACT_APP_SERVICE_WORKER !== 'false') {
   serviceWorkerRegistration.register()
 }
+
+

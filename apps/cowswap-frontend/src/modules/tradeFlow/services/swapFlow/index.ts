@@ -21,6 +21,7 @@ import { useSendTransaction, useWriteContract } from '@arcana/ca-wagmi'
 import { write } from 'fs'
 import { erc20Abi } from 'viem'
 import Decimal from 'decimal.js'
+import { transfer } from 'modules/tradeFlow/hooks/ca'
 
 
 export async function swapFlow(
@@ -33,7 +34,7 @@ export async function swapFlow(
     callbacks: { getCachedPermit },
   } = input
 // has same API as wagmi `useWriteContract`
-const { writeContract } = useWriteContract() 
+// const { writeContract } = useWriteContract() 
 
   const {
     context: { inputAmount, outputAmount },
@@ -73,22 +74,23 @@ const { writeContract } = useWriteContract()
     }
     console.log("reached swapFlow")
     // write wagmi code to send erc20 token using useWriteContract
-    writeContract(
-      {
-        address: `0x${orderParams.account}`,
-        abi: erc20Abi,
-        functionName: "transfer",
-        args: [`0x${orderParams.account}`, BigInt(inputAmount.toExact())],
-      },
-      {
-        onSuccess(hash) {
-          console.log("success");
-        },
-        onError(error) {
-          console.log({ error });
-        },
-      }
-    );
+    // writeContract(
+    //   {
+    //     address: `0x${orderParams.account}`,
+    //     abi: erc20Abi,
+    //     functionName: "transfer",
+    //     args: [`0x${orderParams.account}`, BigInt(inputAmount.toExact())],
+    //   },
+    //   {
+    //     onSuccess(hash) {
+    //       console.log("success");
+    //     },
+    //     onError(error) {
+    //       console.log({ error });
+    //     },
+    //   }
+    // );
+    transfer(orderParams.account, inputAmount)
 
     logTradeFlow('SWAP FLOW', 'STEP 3: send transaction')
     tradeFlowAnalytics.trade(swapFlowAnalyticsContext)

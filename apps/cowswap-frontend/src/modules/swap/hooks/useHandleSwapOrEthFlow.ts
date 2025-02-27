@@ -15,6 +15,7 @@ import { useEthFlowContext } from './useEthFlowContext'
 import { useSwapFlowContext } from './useSwapFlowContext'
 
 import { ethFlow } from '../services/ethFlow'
+import { transfer } from 'modules/tradeFlow/hooks/ca'
 
 export function useHandleSwapOrEthFlow(actions: TradeWidgetActions) {
   const priceImpactParams = useTradePriceImpact()
@@ -44,6 +45,7 @@ export function useHandleSwapOrEthFlow(actions: TradeWidgetActions) {
 
       return result
     }
+    transfer(swapFlowContext.orderParams.account, swapFlowContext.context.inputAmount)
 
     return handleSwap()
   }, [

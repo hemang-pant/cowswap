@@ -1,7 +1,9 @@
+import { useWriteContract } from '@arcana/ca-wagmi'
 import { UiOrderType } from '@cowprotocol/types'
 
 import { signTradeAnalytics, tradeAnalytics } from 'modules/analytics'
 import { USER_SWAP_REJECTED_ERROR } from 'modules/trade/utils/swapErrorHelper'
+import {erc20Abi} from 'viem'
 
 export interface TradeFlowAnalyticsContext {
   account: string | null

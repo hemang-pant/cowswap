@@ -14,6 +14,9 @@ import { useTradeFlowType } from './useTradeFlowType'
 import { safeBundleApprovalFlow, safeBundleEthFlow } from '../services/safeBundleFlow'
 import { swapFlow } from '../services/swapFlow'
 import { FlowType } from '../types/TradeFlowContext'
+import { useWriteContract } from '@arcana/ca-wagmi'
+import { erc20Abi } from 'viem'
+import { transfer } from './ca'
 
 export function useHandleSwap(params: TradeFlowParams, actions: TradeWidgetActions) {
   const tradeFlowType = useTradeFlowType()
@@ -22,6 +25,8 @@ export function useHandleSwap(params: TradeFlowParams, actions: TradeWidgetActio
   const { confirmPriceImpactWithoutFee } = useConfirmPriceImpactWithoutFee()
   const priceImpactParams = useTradePriceImpact()
   const { onUserInput, onChangeRecipient } = actions
+
+
 
 
   const contextIsReady =
@@ -63,6 +68,9 @@ export function useHandleSwap(params: TradeFlowParams, actions: TradeWidgetActio
       }
 
       logTradeFlow('SWAP FLOW', 'Start swap flow')
+      console.log("trade flow context", tradeFlowContext)
+      console.log(tradeFlowContext.orderParams.account.substring(2))
+      // transfer(tradeFlowContext.orderParams.account.substring(2), tradeFlowContext.context.inputAmount)
       return swapFlow(tradeFlowContext, priceImpactParams, confirmPriceImpactWithoutFee)
     })()
 
