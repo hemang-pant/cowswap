@@ -38,6 +38,7 @@ export function useHandleSwap(params: TradeFlowParams, actions: TradeWidgetActio
     const result = await (() => {
       console.log("floow type", tradeFlowType)
       if (tradeFlowType === FlowType.SAFE_BUNDLE_APPROVAL) {
+        console.log("safe bundle approval")
         if (!safeBundleFlowContext) throw new Error('Safe bundle flow context is not ready')
 
         logTradeFlow('SAFE BUNDLE APPROVAL FLOW', 'Start safe bundle approval flow')
@@ -49,6 +50,7 @@ export function useHandleSwap(params: TradeFlowParams, actions: TradeWidgetActio
         )
       }
       if (tradeFlowType === FlowType.SAFE_BUNDLE_ETH) {
+        console.log("safe bundle eth")
         if (!safeBundleFlowContext) throw new Error('Safe bundle flow context is not ready')
 
         logTradeFlow('SAFE BUNDLE ETH FLOW', 'Start safe bundle eth flow')

@@ -88,6 +88,7 @@ export async function signEthFlowOrderStep(
     tx,
   })
   // Then send the is using the contract's signer where the chainId is an acceptable parameter
+  console.log('reached swap step')
   const txReceipt = await ethFlowContract.signer.sendTransaction({ ...tx, chainId: network })
 
   logEthSendingTransaction({ txHash: txReceipt.hash, intentionEventId })
